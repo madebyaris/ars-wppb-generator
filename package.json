@@ -22,7 +22,7 @@
   "engines": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/tmeister/wppb-gen"
+    "url": "https://github.com/madebyaris/ars-wppb-generator"
   },
   "keywords": [
     "node",
