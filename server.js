@@ -47,6 +47,7 @@ app
     var pluginAuthorEmail = '';
     var pluginAuthorFull = '';
     var pluginNameVersion = '';
+    var pluginNameUppercase = '';
     var destination = '';
     var data = req.body;
     var visitor = ua('UA-56742268-1');
@@ -73,6 +74,7 @@ app
     pluginNamePackage = capitalize(pluginSlug);
     pluginNameInstance = pluginSlug.replace(/-/gi, '_');
     pluginNameVersion = (pluginNameInstance + '_VERSION').toUpperCase();
+    pluginNameUppercase = pluginNameInstance.toUpperCase();
     pluginAuthorFull = pluginAuthor + ' <' + pluginAuthorEmail + '>';
 
     destination =
@@ -186,6 +188,44 @@ app
           recursive: true,
           silent: true
         });
+
+        //find Plugin full path directory
+        replace({
+          regex: 'PLUGIN_NAME_DIR',
+          replacement: pluginNameUppercase+'_DIR',
+          paths: [destination + '/' + pluginSlug],
+          recursive: true,
+          silent: true
+        });
+
+        //find Plugin path url
+        replace({
+          regex: 'PLUGIN_NAME_URL',
+          replacement: pluginNameUppercase+'_URL',
+          paths: [destination + '/' + pluginSlug],
+          recursive: true,
+          silent: true
+        });
+
+        //find Plugin dir Name
+        replace({
+          regex: 'PLUGIN_NAME_DIR_NAME',
+          replacement: pluginNameUppercase+'_DIR_NAME',
+          paths: [destination + '/' + pluginSlug],
+          recursive: true,
+          silent: true
+        });
+
+        //find plugin root name file
+        replace({
+          regex: 'PLUGIN_NAME_FILE',
+          replacement: pluginNameUppercase+'_NAME_FILE',
+          paths: [destination + '/' + pluginSlug],
+          recursive: true,
+          silent: true
+        });
+        
+
         //find Author URI
         replace({
           regex: 'plugin_name',
